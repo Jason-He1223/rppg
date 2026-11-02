@@ -15,24 +15,13 @@ import torch
 # ============================================================
 # Existing preprocessing / RhythmFormer utilities
 # ============================================================
-
-PROJECT_ROOT = Path(
-    "/iacl/pg25/zijie/rppg/rPPG-TalkingFace-Detector"
-)
-
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 SRC_ROOT = PROJECT_ROOT / "src"
-
-sys.path.insert(
-    0,
-    str(SRC_ROOT)
-)
+sys.path.insert(0, str(SRC_ROOT))
 
 import extract_waveforms as ew
 
-
-RHYTHMFORMER_REPO = Path(
-    "/iacl/pg25/zijie/rppg/RhythmFormer"
-)
+RHYTHMFORMER_REPO = PROJECT_ROOT / "pretrained" / "RhythmFormer"
 
 
 # ============================================================
@@ -207,10 +196,7 @@ def parse_args():
 
     parser.add_argument(
         "--data-root",
-        default=(
-            "/iacl/pg25/zijie/rppg/"
-            "rPPG-TalkingFace-Detector/data"
-        ),
+        default=str(PROJECT_ROOT / "data"),
     )
 
     parser.add_argument(
